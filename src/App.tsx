@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react'
-import NavBar from './components/NavBar'
+import './index.css'
 import { socket } from './lib/socket'
-import HomePage from './pages/Home'
-import { Switch, Route } from 'wouter'
-import GamePage from './pages/Game'
-import GameNotFound from './pages/GameNotFound'
-import CreateGamePage from './pages/CreateGame'
-import LocalGamePage from './pages/LocalGame'
+import Providers from './lib/providers'
+import Navbar from './lib/components/navbar'
+import { Route, Switch } from 'wouter'
+import HomePage from './pages'
 
-function App () {
+export function App() {
   const [isConnected, setIsConnected] = useState(socket.connected)
 
   useEffect(() => {
-    function onConnect () {
+    function onConnect() {
       setIsConnected(true)
     }
 
-    function onDisconnect () {
+    function onDisconnect() {
       setIsConnected(false)
     }
 
@@ -30,25 +28,13 @@ function App () {
   }, [])
 
   return (
-    <>
-      <NavBar isConnected={isConnected} />
+    <Providers>
+      <Navbar isConnected={isConnected} />
 
       <Switch>
-        <Route path='/' component={HomePage} />
-
-        <Route path='/game' component={CreateGamePage} />
-        <Route path='/game/:roomId'>
-          {(params) => <GamePage roomId={params.roomId} />}
-        </Route>
-        <Route path='/game/error/notFound' component={GameNotFound} />
-
-        <Route path='/local-game' component={LocalGamePage} />
-
-        <Route>
-          404
-        </Route>
+        <Route path="/" component={HomePage} />
       </Switch>
-    </>
+    </Providers>
   )
 }
 

@@ -1,14 +1,11 @@
-export type Player = 'X' | 'O'
+export type Mark = 'X' | 'O' | null
 
-export type Cell = {
-  current: Player | null
-  nextToRemove?: boolean
-  hoveredPlayer: Player | null
+export type GameState = {
+  id: string
+  playerX: string
+  playerO: string
+  board: Mark[]
+  currentTurn: Mark
+  turn: Exclude<Mark, null>
+  winner: Mark | 'draw'
 }
-
-export type Move = {
-  pos: number
-  cell: Cell
-}
-
-export type MoveHistory = Move[]
