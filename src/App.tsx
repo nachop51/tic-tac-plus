@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './index.css'
 import { socket } from './lib/socket'
 import Providers from './lib/providers'
-import Navbar from './lib/components/navbar'
+import Navbar from './lib/components/common/navbar'
 import { Route, Switch } from 'wouter'
 import HomePage from './pages'
 

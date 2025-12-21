@@ -1,7 +1,8 @@
 import { SOCKET_EVENTS } from '@/common/consts'
-import Layout from '@/lib/components/layout'
+import Layout from '@/lib/components/common/layout'
 import { socket } from '@/lib/socket'
-import { Button } from '@heroui/react'
+import { Button, Divider } from '@heroui/react'
+import DisplayBoard from '@/lib/components/game/display-board'
 import { useEffect } from 'react'
 import { useLocation } from 'wouter'
 
@@ -37,6 +38,10 @@ export default function HomePage() {
       </header>
 
       <Button onPress={handleClick}>Create game</Button>
+
+      <Divider className="my-4 w-full" />
+
+      <DisplayBoard onlineGame={false} />
     </Layout>
   )
 }

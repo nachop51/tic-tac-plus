@@ -1,3 +1,8 @@
+import type { Player } from '@/types'
+
+export const BOARD_SIZE = 3
+export const INITIAL_TURN: Player = 'X'
+
 export const WINNING_COMBOS = [
   [0, 1, 2],
   [3, 4, 5],
